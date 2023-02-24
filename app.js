@@ -12,17 +12,17 @@ app.use(express.json());
 app.use(cookieparser());
 
 
+
+
+app.use(require("./router/auth"));
+const PORT = process.env.PORT || 5000;
+
 //Static Files
 app.use(express.static(path.join(__dirname,"./client/build")))
 
 app.get('*',function(req,res){
     res.sendFile(path.join(__dirname,'./client/build/index.html'))
 })
-
-app.use(require("./router/auth"));
-const PORT = process.env.PORT || 5000;
-
-
 
 
 // app.get("/contact",function (req, res){
